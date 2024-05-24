@@ -7,5 +7,16 @@
 </head>
 <body>
     <h1>Login Page</h1>
+    <form th:action th:object="${loginForm}" method="post">
+        <div>
+            <label for="id"> ID를 입력하세요 : </label>
+            <input type="text" id="id" th:field="*{id}">
+        </div>
+        <div>
+            <label for="pw"> PW를 입력하세요 : </label>
+            <input type="text" id="pw" th:field="*{pw}">
+        </div>
+        <button type="submit">로그인하기</button>
+    </form>
 </body>
 </html>
