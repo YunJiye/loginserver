@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -29,4 +30,9 @@ public class UserInfo extends BaseTimeEntity {
     @Column(name="USERPWD")
     private String userpwd;
 
+    @Builder
+    public UserInfo(String userid, String userpwd){
+        this.userid = userid;
+        this.userpwd = userpwd;
+    }
 }

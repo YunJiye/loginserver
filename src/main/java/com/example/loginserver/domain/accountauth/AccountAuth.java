@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -28,4 +29,9 @@ public class AccountAuth {
 
     @JoinColumn(name="UNIQUEID")
     private Long uniqueid;
+
+    @Builder
+    public AccountAuth(String authtype){
+        this.authtype = authtype;
+    }
 }
