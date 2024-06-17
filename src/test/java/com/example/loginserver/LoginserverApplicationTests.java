@@ -28,7 +28,7 @@ class LoginserverApplicationTests {
     public void testGet() throws Exception {
         String id = "testId";
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/test/get")
                 .param("id", id))
                 .andExpect(status().isOk())
                 .andExpect(content().string("id is " + id))

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.loginserver.dto.AlertMessageDto;
 import com.example.loginserver.dto.LoginFormDto;
 import com.example.loginserver.service.checkauth.CheckAuthService;
 
@@ -38,17 +39,23 @@ public class loginController {
     }
 
     // submit login information
-    @ResponseBody
     @PostMapping("/login")
     public String loginForm(@ModelAttribute("loginForm") LoginFormDto loginFormDto){
         log.info("loginFormDto : id={}, pw={}", loginFormDto.getId(), loginFormDto.getPw());
+        // 로그인 성공
         if(checkAuthService.checkAuth(loginFormDto)){
-            return "login complete!";
+            return "testThymeleaf";
         }
+        // 로그인 실패
         else{
-            return "login failed";
+            return "";
         }
-        //return "testThymeleaf";
     }
-    
+
+    // alert for login failure and redirect
+    private String alertLoginFail(AlertMessageDto msg, Model model) {
+        model.addAttribute("alertMessage", msg);
+        return "alertMessageRedirect";
+    }
+ 
 }
