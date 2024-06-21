@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>alert message redirect</title>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        // Spring Boot에서 전달한 메시지를 alert 창으로 표시하는 함수
+        function showAlert() {
+            var alertMessage = /*[[ ${alertMessage.message} ]]*/ '';
+            alert(alertMessage);
+            var redirectUrl = /*[[ ${alertMessage.redirectUrl} ]]*/ '';
+            window.location.replace(redirectUrl); // 원하는 경로로 리다이렉트
+        }
+        /*]]>*/
+    </script>
+</head>
+<body onload="showAlert()">
+    <h1>Alert Message</h1>
+</body>
+</html>

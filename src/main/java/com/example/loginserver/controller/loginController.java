@@ -40,15 +40,20 @@ public class loginController {
 
     // submit login information
     @PostMapping("/login")
-    public String loginForm(@ModelAttribute("loginForm") LoginFormDto loginFormDto){
+    public String loginForm(@ModelAttribute("loginForm") LoginFormDto loginFormDto, Model model){
         log.info("loginFormDto : id={}, pw={}", loginFormDto.getId(), loginFormDto.getPw());
         // 로그인 성공
         if(checkAuthService.checkAuth(loginFormDto)){
+            log.info("login success");
             return "testThymeleaf";
         }
         // 로그인 실패
         else{
-            return "";
+            log.info("login fail");
+            AlertMessageDto msg = new AlertMessageDto();
+            msg.setMessage("로그인 실패! 아이디나 비밀번호를 확인해주세요.");
+            msg.setRedirectUrl("/login");
+            return alertLoginFail(msg, model);
         }
     }
 

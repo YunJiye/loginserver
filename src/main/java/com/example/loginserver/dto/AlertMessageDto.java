@@ -1,10 +1,10 @@
 package com.example.loginserver.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
-@AllArgsConstructor
 public class AlertMessageDto {
     private String message;
     private String redirectUrl;
